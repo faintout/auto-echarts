@@ -32,3 +32,14 @@ export function deepMerge(obj1, obj2) {
     }
     return objClone;
   }
+export function debounce(fn, wait) {
+  let timeout;
+  return function() {
+    let that = this;
+    let arg = arguments;
+    clearTimeout(timeout);
+    timeout = setTimeout(function(){
+      fn.apply(that,arg)//使用apply改变this指向
+    }, wait);
+  }
+}

@@ -3,7 +3,10 @@
 import { deepClone, deepMerge } from "./toolUtils";
 import * as echarts from 'echarts'
 
-import rateBg from '../images/rate-bg.png'
+// import rateBg from '../images/rate-bg.png'
+
+const rateBg = new URL(`../images/rate-bg.png`,import.meta.url)?.pathname
+
 //柱状测试
 export const bar = {
     default:()=>{

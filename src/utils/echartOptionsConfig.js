@@ -595,6 +595,7 @@ export class Pie{
     return baseOptions
     
   }
+  //环形图
   ringPie(options){
     const baseOptions =  deepClone(this.baseOptions)
     //自定义配置

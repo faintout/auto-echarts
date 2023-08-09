@@ -46,14 +46,15 @@ AutoEchart - 二次封装，自适应文字大小，自定义样式配置,适用
 	background: lightsalmon;
 }
 
+
+</style>
+<style>
 .chart {
 	width: 30vw;
 	height: 30vh;
   border: 1px solid lightseagreen;
 	/* background: lightseagreen; */
 }
-</style>
-<style>
 html,
 body {
 	background: #001529 !important;

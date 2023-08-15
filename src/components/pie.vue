@@ -12,7 +12,7 @@ import { computed, reactive} from 'vue'
 import {Pie} from '../utils/echartOptionsConfig'
 import useCalcChart from '../hooks/useCalcChart.js'
 const { 
-    strReplaceCalculator
+    replaceOptionsSize
 } = reactive(useCalcChart())
 const pieChart = reactive({
     data: [
@@ -34,8 +34,8 @@ const pieChart1 = reactive({
 		// { value: 1210, name: '其它2' },
 	],
 })
-const pirChartCalc = computed(()=>strReplaceCalculator(new Pie().multiRingPie(pieChart)))
-const pirChartCalc1 = computed(()=>strReplaceCalculator(new Pie().ringPie(pieChart1)))
+const pirChartCalc = computed(()=>replaceOptionsSize(new Pie().multiRingPie(pieChart)))
+const pirChartCalc1 = computed(()=>replaceOptionsSize(new Pie().ringPie(pieChart1)))
 </script>
 <style scoped >
 .pieChart{

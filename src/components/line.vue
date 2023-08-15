@@ -9,7 +9,7 @@ import { computed, reactive} from 'vue'
 import {Line} from '../utils/echartOptionsConfig'
 import useCalcChart from '../hooks/useCalcChart.js'
 const { 
-    strReplaceCalculator
+    replaceOptionsSize
 } = reactive(useCalcChart())
 const lineChart = reactive({
     xAxis: {
@@ -35,7 +35,7 @@ const lineChart = reactive({
 		},
 	],
 })
-const lineChartCalc = computed(()=>strReplaceCalculator(new Line().base(lineChart)))
+const lineChartCalc = computed(()=>replaceOptionsSize(new Line().base(lineChart)))
 </script>
 <style scoped lang="scss">
 </style>

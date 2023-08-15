@@ -2,7 +2,7 @@ import { reactive, onMounted, onBeforeUnmount, toRefs, computed,ref } from 'vue'
 import { deepMerge, deepClone} from '../utils/toolUtils'
 import useScreen from '../hooks/useScreen'
 //匹配单词
-function extractFirstWordAndMatch(str, pattern, callback) {
+function matchRegexAndReturn(str, pattern, callback) {
     const regex = new RegExp(`^\\b(${pattern})\\b\\(([^)]+)\\)`);
     if(typeof str !== 'string'){
         return
@@ -21,9 +21,9 @@ export default function () {
     const {screenW,screenH } = reactive(useScreen())
 
     //根据指定格式的字符进行替换计算后的值,替换的格式为'w(3)'或'h(3)'
-    //eg strReplaceCalculator({value:'w(3)',value2:'h(3)'),
+    //eg replaceOptionsSize({value:'w(3)',value2:'h(3)'),
     //return {value:6,value2:6}
-    const strReplaceCalculator = computed(() => {
+    const replaceOptionsSize = computed(() => {
         return (options) => {
             try{
                 const clonedObj = deepClone(options); // 克隆对象以避免直接修改原始对象
@@ -34,10 +34,10 @@ export default function () {
                                 obj[key].forEach((item, index) => {
                                     if (typeof item === 'string') {
                                         //此处可根据需要替换所需文字
-                                        extractFirstWordAndMatch(item, 'w', value => {
+                                        matchRegexAndReturn(item, 'w', value => {
                                             obj[key][index] = screenW(value)
                                         })
-                                        extractFirstWordAndMatch(item, 'h', value => {
+                                        matchRegexAndReturn(item, 'h', value => {
                                             obj[key][index] = screenH(value)
                                         })
                                     }else if (typeof obj[key] === 'object') {
@@ -48,10 +48,10 @@ export default function () {
                                 recursiveReplace(obj[key]); // 递归调用处理嵌套对象
                             }
                         } else if (typeof obj[key] === 'string') {
-                            extractFirstWordAndMatch(obj[key], 'w', value => {
+                            matchRegexAndReturn(obj[key], 'w', value => {
                                 obj[key] = screenW(value)
                             })
-                            extractFirstWordAndMatch(obj[key], 'h', value => {
+                            matchRegexAndReturn(obj[key], 'h', value => {
                                 obj[key] = screenH(value)
                             })
                         }
@@ -76,6 +76,6 @@ export default function () {
     })
 
     return {
-        strReplaceCalculator
+        replaceOptionsSize
     }
 }

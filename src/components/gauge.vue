@@ -7,27 +7,17 @@
 <script setup>
 import { computed, reactive} from 'vue'
 import {Gauge} from '../utils/echartOptionsConfig'
+import getImageGauge from '../utils/echartOptions/gauge/imageGauge'
 import useCalcChart from '../hooks/useCalcChart.js'
 const { 
-    strReplaceCalculator
+    replaceOptionsSize
 } = reactive(useCalcChart())
-const gaugeChart = reactive({
-    series: [
-    {
-      type: 'gauge',
-      progress: {
-        show: true
-      },
-      data: [
+const gaugeChart = reactive([
         {
-         
           value: 50,
         }
-      ]
-    }
-  ]
-})
-const gaugeChartCalc = computed(()=>strReplaceCalculator(new Gauge().imageGauge(gaugeChart)))
+      ])
+const gaugeChartCalc = computed(()=>replaceOptionsSize(getImageGauge(gaugeChart)))
 </script>
 <style scoped >
 .gaugeChart{

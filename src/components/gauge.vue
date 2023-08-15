@@ -6,7 +6,6 @@
 
 <script setup>
 import { computed, reactive} from 'vue'
-import {Gauge} from '../utils/echartOptionsConfig'
 import getImageGauge from '../utils/echartOptions/gauge/imageGauge'
 import useCalcChart from '../hooks/useCalcChart.js'
 const { 

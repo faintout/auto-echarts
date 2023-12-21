@@ -1,12 +1,19 @@
 <script setup>
-import Line from './components/line.vue'
-import Pie from './components/pie.vue'
-import Gauge from './components/gauge.vue'
+import Line from './components/chartComponents/line.vue'
+import Bar from './components/chartComponents/bar.vue'
+import Pie from './components/chartComponents/pie.vue'
+import Gauge from './components/chartComponents/gauge.vue'
+import Radar from './components/chartComponents/radar.vue'
+import Polar from './components/chartComponents/polar.vue'
 import { reactive, shallowRef, ref } from 'vue'
 const echartComponentsList = reactive([
 	{
 		name: 'line',
 		component: shallowRef(Line),
+	},
+	{
+		name: 'bar',
+		component: shallowRef(Bar),
 	},
 	{
 		name: 'pie',
@@ -15,6 +22,14 @@ const echartComponentsList = reactive([
 	{
 		name: 'gauge',
 		component: shallowRef(Gauge),
+	},
+	{
+		name: 'radar',
+		component: shallowRef(Radar),
+	},
+	{
+		name: 'polar',
+		component: shallowRef(Polar),
 	},
 ])
 const currComName = ref('line')

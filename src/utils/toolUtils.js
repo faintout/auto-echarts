@@ -32,6 +32,14 @@ export function deepMerge(obj1, obj2) {
     }
     return objClone;
   }
+
+  //获取随机uuid
+export function guid() {
+  function uid() {
+    return (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(1);
+  }
+  return (uid() + uid() + "-" + uid() + "-" + uid() + "-" + uid() + "-" + uid() + uid() + uid());
+}
 export function debounce(fn, wait) {
   let timeout;
   return function() {

@@ -1,0 +1,40 @@
+<template>
+   <div class="chart">
+    <HighGeneralChart :option="polarBaserChart"></HighGeneralChart>
+   </div>
+</template>
+
+<script setup>
+import { computed, reactive,ref} from 'vue'
+import HighGeneralChart from '@/components/chart/highGeneralChart.vue'
+import polarBase from '@/components/chart/chartOptions/polar/base'
+const polarBaserChart = ref(null)
+polarBaserChart.value = polarBase([
+                1,
+                0,
+                0,
+                1,
+                0,
+                0,
+                2,
+                2,
+                0,
+                1,
+                1,
+                1,
+                1,
+                2,
+                0,
+                0,
+                1,
+                1,
+                4,
+                2,
+                4,
+                0,
+                0,
+                0
+            ])
+</script>
+<style scoped >
+</style>

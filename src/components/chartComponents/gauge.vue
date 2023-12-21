@@ -1,0 +1,23 @@
+<template>
+   <div class="chart gaugeChart">
+    <GeneralChart :option="gaugeChart"></GeneralChart>
+   </div>
+</template>
+
+<script setup>
+import { computed, reactive,ref} from 'vue'
+import GeneralChart from '@/components/chart/generalChart.vue'
+import getImageGauge from '@/components/chart/chartOptions/gauge/imageGauge'
+const gaugeChart = ref(null)
+gaugeChart.value = getImageGauge([
+        {
+          value: 50,
+        }
+      ])
+</script>
+<style scoped >
+.gaugeChart{
+    width: calc(300 / 1920 * 100vw) !important;
+    height: calc(300 / 1920 * 100vw) !important;
+}
+</style>

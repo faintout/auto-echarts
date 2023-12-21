@@ -1,8 +1,8 @@
 import { reactive, onMounted, onBeforeUnmount, toRefs ,computed} from 'vue'
 import {debounce} from '../utils/toolUtils.js'
 const screenBaseWH = {
-    width:6480,
-    height:3240
+    width:1920,
+    height:1080
 }
 export default function () {
     //展示的数据  可以通过App.vue 界面去隐藏

@@ -1,7 +1,9 @@
 <template>
-   <div class="chart gaugeChart">
-    <GeneralChart :option="gaugeChart"></GeneralChart>
-   </div>
+  <div class="chart-box">
+    <div class="chart gaugeChart">
+     <GeneralChart :option="gaugeChart"></GeneralChart>
+    </div>
+  </div>
 </template>
 
 <script setup>

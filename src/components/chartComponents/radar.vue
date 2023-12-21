@@ -1,6 +1,8 @@
 <template>
-   <div class="chart">
-    <GeneralChart :option="radarChart"></GeneralChart>
+   <div class="chart-box">
+      <div class="chart">
+       <GeneralChart :option="radarChart"></GeneralChart>
+      </div>
    </div>
 </template>
 

@@ -1,6 +1,8 @@
 <template>
-   <div class="chart">
-    <HighGeneralChart :option="polarBaserChart"></HighGeneralChart>
+   <div class="chart-box">
+      <div class="chart">
+       <HighGeneralChart :option="polarBaserChart"></HighGeneralChart>
+      </div>
    </div>
 </template>
 

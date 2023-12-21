@@ -38,13 +38,15 @@ const currComName = ref('line')
 <template>
 AutoEchart - 二次封装，自适应文字大小，自定义样式配置,适用于大屏项目。
 <br/>
-	<div
+	<div class="btn-area">
+		<div
 		class="components-name"
 		:class="{'active':currComName===item.name}"
 		v-for="item in echartComponentsList"
 		:key="item.name"
 		@click="currComName = item.name"
 	>{{item.name}}</div>
+	</div>
 	<component :is="echartComponentsList.find(com=>com.name===currComName)?.component"></component>
 </template>
 
@@ -62,13 +64,23 @@ AutoEchart - 二次封装，自适应文字大小，自定义样式配置,适用
 }
 
 
+
 </style>
 <style>
+.chart-box{
+	display: flex;
+    flex-wrap: wrap;
+	gap: 10px;
+}
 .chart {
 	width: 30vw;
 	height: 30vh;
   border: 1px solid lightseagreen;
 	/* background: lightseagreen; */
+}
+#app{
+	display: flex;
+    flex-direction: column;
 }
 html,
 body {

@@ -9,9 +9,9 @@
 <script setup>
 import { computed, reactive,ref} from 'vue'
 import GeneralChart from '@/components/chart/generalChart.vue'
-import getImageGauge from '@/components/chart/chartOptions/gauge/imageGauge'
+import ImageGauge from '@/components/chart/chartOptions/gauge/imageGauge'
 const gaugeChart = ref(null)
-gaugeChart.value = getImageGauge([
+gaugeChart.value = new ImageGauge([
         {
           value: 50,
         }

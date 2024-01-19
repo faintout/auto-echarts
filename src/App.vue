@@ -5,8 +5,9 @@ import Pie from './components/chartComponents/pie.vue'
 import Gauge from './components/chartComponents/gauge.vue'
 import Radar from './components/chartComponents/radar.vue'
 import Polar from './components/chartComponents/polar.vue'
+import Sunburst from './components/chartComponents/sunburst.vue'
 import { reactive, shallowRef, ref } from 'vue'
-const echartComponentsList = reactive([
+const chartComponentsList = reactive([
 	{
 		name: 'line',
 		component: shallowRef(Line),
@@ -31,6 +32,10 @@ const echartComponentsList = reactive([
 		name: 'polar',
 		component: shallowRef(Polar),
 	},
+	{
+		name: 'sunburst',
+		component: shallowRef(Sunburst),
+	},
 ])
 const currComName = ref('line')
 </script>
@@ -42,12 +47,12 @@ AutoEchart - 二次封装，自适应文字大小，自定义样式配置,适用
 		<div
 		class="components-name"
 		:class="{'active':currComName===item.name}"
-		v-for="item in echartComponentsList"
+		v-for="item in chartComponentsList"
 		:key="item.name"
 		@click="currComName = item.name"
 	>{{item.name}}</div>
 	</div>
-	<component :is="echartComponentsList.find(com=>com.name===currComName)?.component"></component>
+	<component :is="chartComponentsList.find(com=>com.name===currComName)?.component"></component>
 </template>
 
 <style scoped>

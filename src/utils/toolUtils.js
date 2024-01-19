@@ -51,3 +51,36 @@ export function debounce(fn, wait) {
     }, wait);
   }
 }
+//车辆归属颜色列表
+export const colorList = [
+  "#7990EF",
+  "#F98583",
+  "#FFD47C",
+  "#87BBFB",
+  "#75DDDA",
+  "#76A980",
+  "#D28CFF",
+  "#FFA37C",
+  "#7EDF92",
+  "#FF91C4",
+  "#9EBED1",
+  "#F7B0FF",
+  "#BDF136",
+  "#815B31",
+  "#FFC7C7",
+  "#CA9898",
+  "#6695A4",
+  "#9A69F3",
+  "#1FB471",
+  "#328EFF",
+  "#C6E8E7",
+  "#99B814",
+  "#C4734B",
+  "#983B3B",
+  "#6568FF",
+  "#DDB88E",
+  "#C9D400",
+  "#B6921D",
+  "#000000",
+  "#BEBEBE",
+]

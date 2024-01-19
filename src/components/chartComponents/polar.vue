@@ -9,9 +9,9 @@
 <script setup>
 import { computed, reactive,ref} from 'vue'
 import HighGeneralChart from '@/components/chart/highGeneralChart.vue'
-import polarBase from '@/components/chart/chartOptions/polar/base'
+import PolarBase from '@/components/chart/chartOptions/polar/base'
 const polarBaserChart = ref(null)
-polarBaserChart.value = polarBase([
+polarBaserChart.value = new PolarBase([
                 1,
                 0,
                 0,

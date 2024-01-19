@@ -13,11 +13,11 @@
 <script setup>
 import { computed, reactive,ref} from 'vue'
 import GeneralChart from '@/components/chart/generalChart.vue'
-import lineBase from '@/components/chart/chartOptions/line/base'
-import multipleLine from '@/components/chart/chartOptions/line/multipleLine'
+import LineBase from '@/components/chart/chartOptions/line/base'
+import MultipleLine from '@/components/chart/chartOptions/line/multipleLine'
 const baseLineChart = ref(null)
 const multipleLineChart = ref(null)
-baseLineChart.value = lineBase({
+baseLineChart.value = new LineBase({
     color: {
         areaStyle: [
             'rgba(104, 223, 250, 1)',
@@ -43,7 +43,7 @@ baseLineChart.value = lineBase({
     ]
 })
 
-multipleLineChart.value = multipleLine({
+multipleLineChart.value = new MultipleLine({
     color: [
         '#4073FF',
         '#7EFFA2',

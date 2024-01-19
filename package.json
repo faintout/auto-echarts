@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "echarts": "^5.4.0",
+    "element-plus": "^2.5.1",
     "highcharts": "^10.3.2",
     "highcharts-more": "^0.1.7",
     "vue": "^3.3.4",

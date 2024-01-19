@@ -9,9 +9,9 @@
 <script setup>
 import { computed, reactive,ref} from 'vue'
 import GeneralChart from '@/components/chart/generalChart.vue'
-import radarBase from '@/components/chart/chartOptions/radar/base'
+import RadarBase from '@/components/chart/chartOptions/radar/base'
 const radarChart = ref(null)
-radarChart.value = radarBase()
+radarChart.value = new RadarBase()
 </script>
 <style scoped >
 </style>

@@ -13,11 +13,11 @@
  <script setup>
  import { computed, reactive,ref} from 'vue'
  import GeneralChart from '@/components/chart/generalChart.vue'
- import columnBase from '@/components/chart/chartOptions/column/base'
-import multipleColumn from '@/components/chart/chartOptions/column/multipleColumn'
+ import ColumnBase from '@/components/chart/chartOptions/column/base'
+import MultipleColumn from '@/components/chart/chartOptions/column/multipleColumn'
  const baseBarChart = ref(null)
  const multipleBarChart = ref(null)
- baseBarChart.value = columnBase({
+ baseBarChart.value = new ColumnBase({
     "data": [
         {
             "data": [
@@ -30,7 +30,7 @@ import multipleColumn from '@/components/chart/chartOptions/column/multipleColum
         '4/1', '4/2', '4/3', '4/4', '4/5', '4/6', '4/7'
     ]
 })
-multipleBarChart.value = multipleColumn({
+multipleBarChart.value = new MultipleColumn({
     "data": [
             {
                 "data": [

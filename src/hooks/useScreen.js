@@ -10,16 +10,15 @@ export default function () {
         clientWidth : window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
         clientHeight : window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
     })
-    const screenW = computed(()=>{
-        return (px,screenWidth = screenBaseWH.width)=>{
-            return state.clientWidth / (screenWidth / px)
-        }
-    })
-    const screenH = computed(()=>{
-        return (px,screenHeight = screenBaseWH.height)=>{
-            return state.clientHeight / (screenHeight / px)
-        }
-    })
+    const clientHeight = computed(()=>state.clientHeight)
+    const clientWidth = computed(()=>state.clientWidth)
+
+    const screenH = (px,screenHeight = screenBaseWH.height)=>{
+        return clientHeight.value / (screenHeight / px)
+    }
+    const screenW = (px,screenWidth = screenBaseWH.width)=>{
+        return clientWidth.value / (screenWidth / px)
+    }
 
     const screenChange = ()=>{
         state.clientWidth =  window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth

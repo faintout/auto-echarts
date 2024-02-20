@@ -23,50 +23,52 @@ export default function () {
     //根据指定格式的字符进行替换计算后的值,替换的格式为'w(3)'或'h(3)'
     //eg replaceOptionsSize({value:'w(3)',value2:'h(3)'),
     //return {value:6,value2:6}
-    const replaceOptionsSize = computed(() => {
-        return (options,isResize = true) => {
-            try{
-                const clonedObj = deepClone(options); // 克隆对象以避免直接修改原始对象
-                function recursiveReplace(obj) {
-                    for (let key in obj) {
-                        if (typeof obj[key] === 'object') {
-                            if (Array.isArray(obj[key])) {
-                                obj[key].forEach((item, index) => {
-                                    if (typeof item === 'string') {
-                                        //此处可根据需要替换所需文字
-                                        matchRegexAndReturn(item, 'w', value => {
-                                            obj[key][index] = isResize?screenW(value):value
-                                        })
-                                        matchRegexAndReturn(item, 'h', value => {
-                                            obj[key][index] = isResize?screenH(value):value
-                                        })
-                                    }else if (typeof obj[key] === 'object') {
-                                        recursiveReplace(obj[key]); // 递归调用处理嵌套对象
-                                    }
-                                });
-                            } else {
-                                recursiveReplace(obj[key]); // 递归调用处理嵌套对象
-                            }
-                        } else if (typeof obj[key] === 'string') {
-                            matchRegexAndReturn(obj[key], 'w', value => {
-                                obj[key] = isResize?screenW(value):value
-                            })
-                            matchRegexAndReturn(obj[key], 'h', value => {
-                                obj[key] = isResize?screenH(value):value
-                            })
-                        }
-                    }
-                }
-                recursiveReplace(clonedObj);
-                return clonedObj;   
-            }catch(e){
-                console.error(e)
-                return {series:[]}
-            }
-
+    const replaceOptionsSize = (options) => {
+        try{
+            const clonedObj = deepClone(options); // 克隆对象以避免直接修改原始对象 
+            return recursiveReplace(clonedObj);
+        }catch(e){
+            console.error(e)
+            return {series:[]}
         }
-        
-    })
+
+    }
+    //递归替换指定格式的字符
+    const recursiveReplace = (obj,isResize = true) => {
+        // 使用闭包
+        const replaceWithClosure = (inputObj) => {
+            for (let key in inputObj) {
+                if (typeof inputObj[key] === 'object') {
+                    if (Array.isArray(inputObj[key])) {
+                        inputObj[key].forEach((item, index) => {
+                            if (typeof item === 'string') {
+                                matchRegexAndReturn(item, 'w', value => {
+                                    inputObj[key][index] = isResize ? screenW(value) : value;
+                                });
+                                matchRegexAndReturn(item, 'h', value => {
+                                    inputObj[key][index] = isResize ? screenH(value) : value;
+                                });
+                            } else if (typeof inputObj[key] === 'object') {
+                                replaceWithClosure(inputObj[key]); // 递归调用处理嵌套对象
+                            }
+                        });
+                    } else {
+                        replaceWithClosure(inputObj[key]); // 递归调用处理嵌套对象
+                    }
+                } else if (typeof inputObj[key] === 'string') {
+                    matchRegexAndReturn(inputObj[key], 'w', value => {
+                        inputObj[key] = isResize ? screenW(value) : value;
+                    });
+                    matchRegexAndReturn(inputObj[key], 'h', value => {
+                        inputObj[key] = isResize ? screenH(value) : value;
+                    });
+                }
+            }
+            return inputObj; // 返回处理后的对象
+        };
+    
+        return replaceWithClosure(obj); // 调用闭包函数并返回结果
+    };
     //现实之后调用 挂载完毕
     onMounted(() => {
     })
